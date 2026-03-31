@@ -6,6 +6,10 @@ from sklearn.metrics import accuracy_score, f1_score
 import mlflow
 import joblib
 import os
+ 
+
+os.makedirs("models", exist_ok=True)
+model_path = "models/model.pkl"
 
 df = pd.read_csv("data/dataset.csv")
 
@@ -55,10 +59,8 @@ for name, model, features in runs:
         mlflow.log_metric("f1_score", f1)
 
         # Save model
-        model_path = "models/model.pkl"
+        model_path = f"models/{name}_model.pkl"
         joblib.dump(model, model_path)
-
-        # Log model artifact
         mlflow.log_artifact(model_path)
 
         print(f"{name}: Accuracy={acc}, F1={f1}")
