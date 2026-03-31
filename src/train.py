@@ -26,7 +26,7 @@ runs = [
     ("run4", LogisticRegression(max_iter=200), df.columns[:2]),
 
     # Run 5 → Different model + feature selection
-    ("run5", RandomForestClassifier(n_estimators=100), df.columns[:2]),
+    ("run5", RandomForestClassifier(n_estimators=100), df.columns[:-1]),
 ] 
 os.makedirs("models", exist_ok=True)
  
