@@ -6,7 +6,7 @@ from sklearn.metrics import accuracy_score, f1_score
 import mlflow
 import joblib
 import os
- 
+mlflow.set_tracking_uri("file:./mlruns")
 
 os.makedirs("models", exist_ok=True)
 model_path = "models/model.pkl"
